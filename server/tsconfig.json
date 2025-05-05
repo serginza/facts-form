@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "routes/*": ["routes/*"],
+      "controllers/*": ["controllers/*"],
+      "constants/*": ["constants/*"],
+      "services/*": ["services/*"]
+    },
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "target": "ES6"
+  }
+}

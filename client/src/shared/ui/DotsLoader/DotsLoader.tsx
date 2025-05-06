@@ -1,4 +1,4 @@
-import { DotsContainer, LoaderDot, LoaderWrapper } from './DotsLoader.style';
+import { DotsContainer, LoaderDot, LoaderWrapper } from './DotsLoader.styles';
 
 export function DotsLoader() {
   return (

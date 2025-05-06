@@ -1,7 +1,8 @@
 import { memo } from 'react';
+import { MainPageModule } from 'modules/MainPage';
 
 function MainPageProto() {
-  return <div>TEST</div>;
+  return <MainPageModule />;
 }
 
 const MainPage = memo(MainPageProto);

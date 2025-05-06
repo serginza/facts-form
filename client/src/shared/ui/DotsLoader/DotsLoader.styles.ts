@@ -21,6 +21,7 @@ export const LoaderWrapper = styled.div({
   left: '50%',
   transform: 'translate(-50%, -50%)',
   backgroundColor: 'rgba(0, 0, 0, 0.35)',
+  pointerEvents: 'none',
 });
 
 export const DotsContainer = styled.div({

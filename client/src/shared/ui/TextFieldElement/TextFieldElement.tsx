@@ -1,12 +1,14 @@
 import { memo } from 'react';
-import { Controller, Control, FieldValues, Path } from 'react-hook-form';
-import { TextField, TextFieldProps } from '@mui/material';
+import { Controller } from 'react-hook-form';
+import type { Control, FieldValues, Path } from 'react-hook-form';
+import { TextField, type TextFieldProps } from '@mui/material';
+import { textFieldElementStyle } from './TextFieldElement.styles';
 
 type TextFieldElementProps<T extends FieldValues> = Omit<
   TextFieldProps,
   'name'
 > & {
-  control?: Control<T>;
+  control: Control<T>;
   name: Path<T>;
 };
 
@@ -44,6 +46,7 @@ function TextFieldElementProto<TFieldValues extends FieldValues>({
           error={invalid}
           helperText={error?.message || rest.helperText}
           disabled={disabled}
+          sx={textFieldElementStyle}
         />
       )}
     />

@@ -21,7 +21,7 @@ function ContactUsModuleProto() {
 
   const onSubmit = useCallback(() => {
     handleSubmit((data) => {
-      console.log('data', data);
+      console.log('userInfo', data);
       sendUserInfo(data);
     })();
   }, [handleSubmit, sendUserInfo]);
@@ -35,9 +35,9 @@ function ContactUsModuleProto() {
       </Typography>
     </Stack>
   ) : (
-    <form aria-labelledby="contact-us-form">
+    <form aria-labelledby="contact us form">
       <FieldsetWrapper>
-        <h1 aria-labelledby="form-title">Fill out the feedback form</h1>
+        <h1 aria-labelledby="form title">Fill out the feedback form</h1>
         <TextFieldElement
           name="name"
           label="Name"
@@ -64,7 +64,7 @@ function ContactUsModuleProto() {
         <ButtonElement
           onClick={onSubmit}
           disabled={!formState.isValid}
-          aria-labelledby="submit-button"
+          aria-labelledby="submit button"
         >
           Submit
         </ButtonElement>

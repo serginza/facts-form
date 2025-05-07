@@ -1,13 +1,15 @@
 import { lazy, memo, Suspense } from 'react';
-import { YouTubePlayer } from 'react-youtube';
 import { Box, Stack, Typography } from '@mui/material';
 import { FACTS_DATA } from 'shared/constants';
 import { DotsLoader } from 'shared/ui';
-import { MainPageContentWrapper, StyledSection } from './MainPage.styles';
+import {
+  factsDataContainerStyles,
+  MainPageContentWrapper,
+  StyledSection,
+} from './MainPage.styles';
 import { ContactUsButton } from 'shared/components';
 
 function MainPageModuleProto() {
-  //@ts-expect-error //TODO: проработать тип as Promise<{ default: React.ComponentType<any> }>);
   const YouTube = lazy(() => import('react-youtube'));
 
   return (
@@ -22,7 +24,10 @@ function MainPageModuleProto() {
           alignItems={'flex-start'}
           gap={'64px'}
         >
-          <Box style={{ width: '100%', maxWidth: '500px', marginLeft: '32px' }}>
+          <Box
+            style={{ width: '100%', maxWidth: '500px', marginLeft: '32px' }}
+            aria-labelledby="fact heading"
+          >
             <Typography variant="h1" margin="32px 0">
               FACTS <br /> ARE THE FOUNDATION <br /> OF SCIENCE
             </Typography>
@@ -40,11 +45,13 @@ function MainPageModuleProto() {
               position: 'relative',
               margin: '24px 32px 0 0',
             }}
+            aria-labelledby="facts video"
           >
             <Suspense fallback={<DotsLoader />}>
               <YouTube
                 videoId="vjRJHhuAnYY"
                 opts={{ width: '530px', height: '320px' }}
+                alt="facts video"
                 // TODO: сделать резиновый плеер youtube
                 // opts={{
                 //   width: '100%',
@@ -66,10 +73,18 @@ function MainPageModuleProto() {
           alignItems={'center'}
           gap={'24px'}
         >
-          <Typography variant="h2" m="32px auto" letterSpacing={1.3}>
+          <Typography
+            variant="h2"
+            m="32px"
+            letterSpacing={1.3}
+            aria-labelledby="facts subheading"
+          >
             FACTS FROM THE WORLD
           </Typography>
-          <Box display="grid" gridTemplateColumns="repeat(3, 1fr)">
+          <Box
+            aria-labelledby="facts overstatement"
+            sx={factsDataContainerStyles}
+          >
             {FACTS_DATA.map((fact) => (
               <Box sx={{ margin: '0 32px 32px' }} key={fact.title}>
                 <Typography fontWeight={600}>{fact.title}</Typography>
@@ -79,7 +94,7 @@ function MainPageModuleProto() {
               </Box>
             ))}
           </Box>
-          <ContactUsButton />
+          <ContactUsButton aria-label="contact us" />
         </Stack>
       </StyledSection>
       <StyledSection height="250px">
@@ -90,10 +105,15 @@ function MainPageModuleProto() {
           alignItems={'center'}
           gap={'24px'}
         >
-          <Typography variant="h3" letterSpacing={1.3}>
+          <Typography
+            variant="h3"
+            letterSpacing={1.3}
+            m="32px"
+            aria-labelledby="more facts heading"
+          >
             DO YOU WANT MORE FACTS?
           </Typography>
-          <ContactUsButton />
+          <ContactUsButton aria-label="contact us" />
         </Stack>
       </StyledSection>
     </MainPageContentWrapper>

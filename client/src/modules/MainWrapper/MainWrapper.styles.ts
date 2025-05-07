@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const MainPageWrapper = styled.div({
   width: '100%',
+  minWidth: '320px',
   height: '100%',
   margin: '0 auto',
   display: 'flex',
@@ -12,6 +13,7 @@ export const MainPageWrapper = styled.div({
 
 export const MainContentWrapper = styled.main({
   width: '100%',
+  minWidth: '320px',
   margin: '100px 0',
   display: 'flex',
   flexDirection: 'column',
@@ -24,6 +26,7 @@ export const StyledHeader = styled.header({
   top: 0,
   zIndex: 10,
   width: '100vw',
+  minWidth: '320px',
   height: '100px',
   display: 'flex',
   justifyContent: 'center',
@@ -37,6 +40,7 @@ export const StyledFooter = styled.footer({
   bottom: 0,
   zIndex: 10,
   width: '100vw',
+  minWidth: '320px',
   height: '100px',
   display: 'flex',
   flexDirection: 'column',

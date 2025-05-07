@@ -42,7 +42,6 @@ class ContactUsStoreProto {
   async sendUserInfo(userInfo: UserInfoEntity) {
     this.isLoading = true;
     try {
-      console.log('userInfo: ', userInfo);
       const adaptedUserInfo = FactsAdapter.toExternal(userInfo);
       await sendUserInfo(adaptedUserInfo).then(
         (message) => (this.responseMessage = message)

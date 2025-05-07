@@ -21,6 +21,16 @@ export const StyledSection = styled.section<StyledSectionType>(
     gap: 0,
     padding: 0,
     backgroundColor,
-    // outline: '1px solid red',
   })
 );
+
+export const factsDataContainerStyles = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(3, 1fr)',
+  '@media (max-width: 720px)': {
+    gridTemplateColumns: 'repeat(2, 1fr)',
+  },
+  '@media (max-width: 400px)': {
+    gridTemplateColumns: '1fr',
+  },
+};

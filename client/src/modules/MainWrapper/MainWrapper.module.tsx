@@ -25,14 +25,19 @@ function MainWrapperProto() {
           <Link
             href={ROOT}
             sx={{ textDecoration: 'none', color: 'var(--dark-indigo-100)' }}
+            aria-label="go to facts company homepage"
           >
-            <Typography variant="h6" marginLeft="32px">
+            <Typography
+              variant="h6"
+              marginLeft="32px"
+              aria-labelledby="company-header"
+            >
               Facts Company
             </Typography>
           </Link>
 
-          <nav style={{ marginRight: '32px' }}>
-            <ContactUsButton />
+          <nav style={{ marginRight: '32px' }} aria-label="main navigation">
+            <ContactUsButton aria-label="contact us" />
           </nav>
         </Stack>
       </StyledHeader>
@@ -48,8 +53,12 @@ function MainWrapperProto() {
           justifyContent={'space-center'}
           alignItems={'center'}
         >
-          <Typography variant="h6">Facts Company</Typography>
-          <Typography variant="body2">by Serginza</Typography>
+          <Typography variant="h6" aria-labelledby="company footer">
+            Facts Company {new Date().getFullYear()}
+          </Typography>
+          <Typography variant="body2" aria-labelledby="company owner">
+            by Serginza ©
+          </Typography>
         </Stack>
       </StyledFooter>
     </MainPageWrapper>

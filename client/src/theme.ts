@@ -4,23 +4,34 @@ const theme = createTheme({
   typography: {
     fontFamily: 'var(--font-ptsans)',
     h1: {
-      fontSize: '48px',
+      fontSize: '3rem',
       fontWeight: 600,
+      color: 'var(--dark-indigo-100)',
     },
     h2: {
-      fontSize: '40px',
+      fontSize: '2rem',
       fontWeight: 600,
+      color: 'var(--dark-indigo-100)',
     },
     h3: {
-      fontSize: '36px',
+      fontSize: '1.5rem',
       fontWeight: 600,
+      color: 'var(--dark-indigo-100)',
     },
     h4: {
-      fontSize: '24px',
+      fontSize: '1rem',
       fontWeight: 400,
+      color: 'var(--dark-indigo-100)',
     },
     h5: {
       fontSize: '16px',
+      color: 'var(--dark-indigo-100)',
+    },
+    body1: {
+      color: 'var(--deep-dark-indigo-100)',
+    },
+    body2: {
+      color: 'var(--deep-dark-indigo-100)',
     },
   },
 });

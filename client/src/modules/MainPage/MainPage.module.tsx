@@ -7,71 +7,94 @@ import { MainPageContentWrapper, StyledSection } from './MainPage.styles';
 import { ContactUsButton } from 'shared/components';
 
 function MainPageModuleProto() {
-  //@ts-expect-error //as Promise<{ default: React.ComponentType<any> }>);
+  //@ts-expect-error //TODO: проработать тип as Promise<{ default: React.ComponentType<any> }>);
   const YouTube = lazy(() => import('react-youtube'));
 
   return (
     <MainPageContentWrapper>
-      <StyledSection
-        flexDirection="row"
-        alignItems="flex-start"
-        justifyContent="space-between"
-        backgroundColor="var(--soft-indigo-10)"
-        height="400px"
-        gap="32px"
-      >
-        <Stack spacing={3}>
-          <div style={{ maxWidth: '600px' }}>
-            <Typography variant="h1" marginTop="32px">
-              Facts are the foundation of science
+      <StyledSection backgroundColor="var(--soft-indigo-10)" height="400px">
+        <Stack
+          p={'0 0 40px'}
+          maxWidth={'1280px'}
+          display={'flex'}
+          flexDirection={'row'}
+          justifyContent={'space-between'}
+          alignItems={'flex-start'}
+          gap={'64px'}
+        >
+          <Box style={{ width: '100%', maxWidth: '500px', marginLeft: '32px' }}>
+            <Typography variant="h1" margin="32px 0">
+              FACTS <br /> ARE THE FOUNDATION <br /> OF SCIENCE
             </Typography>
-            <Typography variant="h5">
+            <Typography variant="h5" textAlign="justify">
               Facts are things that can be tested and verified. They are
               independent of how we perceive them or what we think. Facts can be
               about anything: nature, events, people, or objects. They are the
               building blocks of knowledge.
             </Typography>
-          </div>
-          <div
+          </Box>
+          <Box
             style={{
               width: '530px',
               height: '320px',
               position: 'relative',
-              marginTop: '24px',
+              margin: '24px 32px 0 0',
             }}
           >
             <Suspense fallback={<DotsLoader />}>
               <YouTube
-                videoId="dQw4w9WgXcQ"
+                videoId="vjRJHhuAnYY"
                 opts={{ width: '530px', height: '320px' }}
+                // TODO: сделать резиновый плеер youtube
+                // opts={{
+                //   width: '100%',
+                //   maxWidth: '530px',
+                //   height: '100%',
+                //   maxHeight: '320px',
+                // }}
               />
             </Suspense>
-          </div>
+          </Box>
         </Stack>
       </StyledSection>
-      <StyledSection padding="0 0 40px">
-        <Typography variant="h2" m="32px auto">
-          Facts from the world
-        </Typography>
-        <Box display="grid" gridTemplateColumns="repeat(3, 1fr)">
-          {FACTS_DATA.map((fact) => (
-            <Box sx={{ margin: '0 32px 32px' }} key={fact.title}>
-              <Typography fontWeight={600}>{fact.title}</Typography>
-              <Typography variant="body2" textAlign="justify">
-                {fact.description}
-              </Typography>
-            </Box>
-          ))}
-        </Box>
-        <ContactUsButton />
+      <StyledSection backgroundColor="rgba(255, 205, 149, 60)">
+        <Stack
+          p="0 0 40px"
+          maxWidth={'1280px'}
+          display={'flex'}
+          justifyContent={'center'}
+          alignItems={'center'}
+          gap={'24px'}
+        >
+          <Typography variant="h2" m="32px auto" letterSpacing={1.3}>
+            FACTS FROM THE WORLD
+          </Typography>
+          <Box display="grid" gridTemplateColumns="repeat(3, 1fr)">
+            {FACTS_DATA.map((fact) => (
+              <Box sx={{ margin: '0 32px 32px' }} key={fact.title}>
+                <Typography fontWeight={600}>{fact.title}</Typography>
+                <Typography variant="body2" textAlign="justify">
+                  {fact.description}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+          <ContactUsButton />
+        </Stack>
       </StyledSection>
-      <StyledSection
-        height="250px"
-        gap="24px"
-        backgroundColor="var(--soft-indigo-10)"
-      >
-        <Typography variant="h3">Do you want more facts?</Typography>
-        <ContactUsButton />
+      <StyledSection height="250px">
+        <Stack
+          maxWidth={'1280px'}
+          display={'flex'}
+          justifyContent={'center'}
+          alignItems={'center'}
+          gap={'24px'}
+        >
+          <Typography variant="h3" letterSpacing={1.3}>
+            DO YOU WANT MORE FACTS?
+          </Typography>
+          <ContactUsButton />
+        </Stack>
       </StyledSection>
     </MainPageContentWrapper>
   );

@@ -8,7 +8,8 @@ type TextFieldElementProps<T extends FieldValues> = Omit<
   TextFieldProps,
   'name'
 > & {
-  control: Control<T>;
+  // TODO: решить проблему с any
+  control: Control<any>;
   name: Path<T>;
 };
 

@@ -22,6 +22,7 @@ export const LoaderWrapper = styled.div({
   transform: 'translate(-50%, -50%)',
   backgroundColor: 'rgba(0, 0, 0, 0.35)',
   pointerEvents: 'none',
+  zIndex: 1000,
 });
 
 export const DotsContainer = styled.div({

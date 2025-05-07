@@ -1,35 +1,43 @@
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { observer } from 'mobx-react';
-import { ButtonElement, TextFieldElement } from 'shared/ui';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ButtonElement, DotsLoader, TextFieldElement } from 'shared/ui';
 import { ContactUsStore } from './ContactUs.store';
 import { FieldsetWrapper } from './ContactUs.styles';
+import { userInfoSchema } from './ContactUs.schema';
+import type { UserInfoEntity } from 'entities/ContactUs';
+import { Stack, Typography } from '@mui/material';
 
 function ContactUsModuleProto() {
-  const { isLoading, sendUserInfo } = ContactUsStore;
+  const { isLoading, sendUserInfo, responseMessage } = ContactUsStore;
 
-  //<UserInfoEntity>
-  const methods = useForm({
+  const methods = useForm<UserInfoEntity>({
     mode: 'all',
-    // resolver: zodResolver(taskSchema),
+    resolver: zodResolver(userInfoSchema),
   });
 
-  const { control, handleSubmit, watch } = methods;
-
-  console.log(watch());
+  const { control, handleSubmit, formState } = methods;
 
   const onSubmit = useCallback(() => {
     handleSubmit((data) => {
       console.log('data', data);
-      // @ts-expect-error TODO: Решить ошибку типизации control
       sendUserInfo(data);
     })();
   }, [handleSubmit, sendUserInfo]);
 
-  return (
-    <form>
+  return isLoading ? (
+    <DotsLoader />
+  ) : responseMessage ? (
+    <Stack width={'100%'} height={'50vw'}>
+      <Typography variant="h1" m="auto" p="0 20px">
+        {responseMessage}
+      </Typography>
+    </Stack>
+  ) : (
+    <form aria-labelledby="contact-us-form">
       <FieldsetWrapper>
-        <h1>Fill out the feedback form</h1>
+        <h1 aria-labelledby="form-title">Fill out the feedback form</h1>
         <TextFieldElement
           name="name"
           label="Name"
@@ -53,7 +61,13 @@ function ContactUsModuleProto() {
           rows={4}
           fullWidth
         />
-        <ButtonElement onClick={onSubmit}>Submit</ButtonElement>
+        <ButtonElement
+          onClick={onSubmit}
+          disabled={!formState.isValid}
+          aria-labelledby="submit-button"
+        >
+          Submit
+        </ButtonElement>
       </FieldsetWrapper>
     </form>
   );

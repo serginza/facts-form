@@ -12,4 +12,9 @@ export const buttonElementStyle = {
     background: 'rgba(67, 86, 255, 0.9)',
     transform: 'scale(0.99)',
   },
+  '&:disabled': {
+    background: 'rgba(67, 86, 255, 0.3)',
+    color: 'rgb(82, 82, 82)',
+    cursor: 'not-allowed',
+  },
 };

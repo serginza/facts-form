@@ -9,7 +9,7 @@ type TextFieldElementProps<T extends FieldValues> = Omit<
   'name'
 > & {
   // TODO: решить проблему с any
-  control: Control<any>;
+  control: Control<T>;
   name: Path<T>;
 };
 
@@ -54,4 +54,6 @@ function TextFieldElementProto<TFieldValues extends FieldValues>({
   );
 }
 
-export const TextFieldElement = memo(TextFieldElementProto);
+export const TextFieldElement = memo(
+  TextFieldElementProto
+) as typeof TextFieldElementProto;

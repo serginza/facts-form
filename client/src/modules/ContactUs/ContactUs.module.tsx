@@ -19,25 +19,37 @@ function ContactUsModuleProto() {
 
   const { control, handleSubmit, formState } = methods;
 
-  const onSubmit = useCallback(() => {
-    handleSubmit((data) => {
-      console.log('userInfo', data);
-      sendUserInfo(data);
-    })();
-  }, [handleSubmit, sendUserInfo]);
+  const onSubmit = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      e.preventDefault();
+      handleSubmit((data) => {
+        console.log('userInfo', data);
+        sendUserInfo(data);
+      })();
+    },
+    [handleSubmit, sendUserInfo]
+  );
 
-  return isLoading ? (
-    <DotsLoader />
-  ) : responseMessage ? (
-    <Stack width={'100%'} height={'50vw'}>
-      <Typography variant="h1" m="auto" p="0 20px">
-        {responseMessage}
-      </Typography>
-    </Stack>
-  ) : (
+  if (isLoading) {
+    return <DotsLoader />;
+  }
+
+  if (responseMessage) {
+    return (
+      <Stack width={'100%'} height={'50vw'}>
+        <Typography variant="h1" m="auto" p="0 20px">
+          {responseMessage}
+        </Typography>
+      </Stack>
+    );
+  }
+
+  return (
     <form aria-labelledby="contact us form">
       <FieldsetWrapper>
-        <h1 aria-labelledby="form title">Fill out the feedback form</h1>
+        <Typography variant="h2" m="20px auto" aria-labelledby="form title">
+          Fill out the feedback form
+        </Typography>
         <TextFieldElement
           name="name"
           label="Name"
@@ -62,6 +74,7 @@ function ContactUsModuleProto() {
           fullWidth
         />
         <ButtonElement
+          type="submit"
           onClick={onSubmit}
           disabled={!formState.isValid}
           aria-labelledby="submit button"

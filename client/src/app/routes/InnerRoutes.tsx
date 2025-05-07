@@ -1,5 +1,5 @@
 import { lazy, memo, type ReactElement, Suspense } from 'react';
-import { HashRouter, BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { PATH_LIST, ROOT } from 'shared/constants';
 import { DotsLoader } from 'shared/ui';
 

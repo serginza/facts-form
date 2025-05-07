@@ -32,7 +32,7 @@ export const StyledHeader = styled.header({
   justifyContent: 'center',
   alignItems: 'center',
   outline: '2px solid var(--soft-indigo-30)',
-  backgroundColor: 'var(--main-bg-color)',
+  backgroundColor: 'rgba(224, 229, 255, 1)',
 });
 
 export const StyledFooter = styled.footer({

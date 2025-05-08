@@ -5,7 +5,9 @@ import { DotsLoader } from 'shared/ui';
 import {
   factsDataContainerStyles,
   MainPageContentWrapper,
+  mainSectionContainerStyles,
   StyledSection,
+  videoContainerStyles,
 } from './MainPage.styles';
 import { ContactUsButton } from 'shared/components';
 
@@ -14,18 +16,10 @@ function MainPageModuleProto() {
 
   return (
     <MainPageContentWrapper>
-      <StyledSection backgroundColor="var(--soft-indigo-10)" height="400px">
-        <Stack
-          p={'0 0 40px'}
-          maxWidth={'1280px'}
-          display={'flex'}
-          flexDirection={'row'}
-          justifyContent={'space-between'}
-          alignItems={'flex-start'}
-          gap={'64px'}
-        >
+      <StyledSection>
+        <Stack sx={mainSectionContainerStyles}>
           <Box
-            style={{ width: '100%', maxWidth: '500px', marginLeft: '32px' }}
+            style={{ maxWidth: '500px', margin: '0 32px' }}
             aria-labelledby="fact heading"
           >
             <Typography variant="h1" margin="32px 0">
@@ -38,27 +32,12 @@ function MainPageModuleProto() {
               building blocks of knowledge.
             </Typography>
           </Box>
-          <Box
-            style={{
-              width: '530px',
-              height: '320px',
-              position: 'relative',
-              margin: '24px 32px 0 0',
-            }}
-            aria-labelledby="facts video"
-          >
+          <Box sx={videoContainerStyles} aria-labelledby="facts video">
             <Suspense fallback={<DotsLoader />}>
               <YouTube
                 videoId="vjRJHhuAnYY"
-                opts={{ width: '530px', height: '320px' }}
+                opts={{ width: '100%', height: '100%', scale: 1.5 }}
                 alt="facts video"
-                // TODO: сделать резиновый плеер youtube
-                // opts={{
-                //   width: '100%',
-                //   maxWidth: '530px',
-                //   height: '100%',
-                //   maxHeight: '320px',
-                // }}
               />
             </Suspense>
           </Box>
@@ -75,8 +54,9 @@ function MainPageModuleProto() {
         >
           <Typography
             variant="h2"
-            m="32px"
+            m="48px 32px"
             letterSpacing={1.3}
+            textAlign={'center'}
             aria-labelledby="facts subheading"
           >
             FACTS FROM THE WORLD
@@ -109,6 +89,7 @@ function MainPageModuleProto() {
             variant="h3"
             letterSpacing={1.3}
             m="32px"
+            textAlign={'center'}
             aria-labelledby="more facts heading"
           >
             DO YOU WANT MORE FACTS?

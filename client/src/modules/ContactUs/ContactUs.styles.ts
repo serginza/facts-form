@@ -13,3 +13,12 @@ export const FieldsetWrapper = styled.fieldset({
   borderRadius: '6px',
   backgroundColor: 'white',
 });
+
+export const responseMessageStyles = {
+  margin: 'auto',
+  padding: '0 20px',
+  textAlign: 'center',
+  '@media (max-width: 720px)': {
+    margin: '100px auto',
+  },
+};

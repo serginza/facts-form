@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ButtonElement, DotsLoader, TextFieldElement } from 'shared/ui';
 import { ContactUsStore } from './ContactUs.store';
-import { FieldsetWrapper } from './ContactUs.styles';
+import { FieldsetWrapper, responseMessageStyles } from './ContactUs.styles';
 import { userInfoSchema } from './ContactUs.schema';
 import type { UserInfoEntity } from 'entities/ContactUs';
 import { Stack, Typography } from '@mui/material';
@@ -37,7 +37,7 @@ function ContactUsModuleProto() {
   if (responseMessage) {
     return (
       <Stack width={'100%'} height={'50vw'}>
-        <Typography variant="h1" m="auto" p="0 20px">
+        <Typography variant="h1" sx={responseMessageStyles}>
           {responseMessage}
         </Typography>
       </Stack>

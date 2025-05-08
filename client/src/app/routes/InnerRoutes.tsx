@@ -28,7 +28,6 @@ function SuspenseWrapper(page: ReactElement) {
 
 function MainRoutes() {
   return (
-    //TODO: с HashRouter можно деплоить, но есть проблемы с '#'
     <BrowserRouter>
       <Routes>
         <Route path={ROOT} element={SuspenseWrapper(<MainWrapper />)}>
